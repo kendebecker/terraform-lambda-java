@@ -1,11 +1,11 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
   version: '1.0'
   title: "CodingTips"
 schemes:
   - https
 paths:
-  "/api":
+  /api:
     get:
       description: "Get coding tips"
       produces:
