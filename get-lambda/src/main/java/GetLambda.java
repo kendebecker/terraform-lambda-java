@@ -23,10 +23,6 @@ public class GetLambda implements RequestHandler<APIGatewayProxyRequestEvent, AP
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent event, Context context) {
         log.info("Handling get request");
 
-        String output = "Hello WORLD";
-
-        log.info("Responding with body {}", output);
-
         LambdaExecutionResponse response = getTips();
 
         log.info("Succesfully executed getTips");
