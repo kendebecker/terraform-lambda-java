@@ -6,14 +6,18 @@ import com.google.gson.Gson;
 import lambda.LambdaExecutionResponse;
 import lombok.extern.slf4j.Slf4j;
 import model.CodingTip;
+import persistence.CodingTipsRepository;
 
 @Slf4j
 public class PostLambda implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     private Gson gson;
+    private CodingTipsRepository codingTipsRepository;
+
 
     public PostLambda(){
         gson = new Gson();
+        codingTipsRepository = new CodingTipsRepository();
     }
 
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent event, Context context) {
@@ -27,7 +31,15 @@ public class PostLambda implements RequestHandler<APIGatewayProxyRequestEvent, A
 
         log.info(tip.toString());
 
+        postTip(tip);
+
         return LambdaExecutionResponse.ok().toAPIGatewayProxyResponseEvent();
 
+    }
+
+    private void postTip(CodingTip tip){
+        log.info("Posting tip [{}]", tip.toString());
+        codingTipsRepository.postTip(tip);
+        log.info("Posted tip");
     }
 }

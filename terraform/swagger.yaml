@@ -12,7 +12,7 @@ paths:
         - application/json
       responses:
         200:
-          description: "The codingtips request successful."
+          description: "The coding tips request successful."
           schema:
             type: array
             items:

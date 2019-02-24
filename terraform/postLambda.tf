@@ -9,9 +9,17 @@ resource "aws_lambda_function" "post-tips-lambda" {
   # exported in that file.
   handler = "${var.post_lambda_function_handler}"
   runtime = "${var.lambda_runtime}"
-  memory_size = 128
+  memory_size = 512
+  timeout = 30
 
   role = "${aws_iam_role.lambda_role.arn}"
+
+  environment {
+    variables {
+      SCANLIMIT = "${var.scanlimit}"
+      REGION = "${var.region}"
+    }
+  }
 }
 
 resource "aws_lambda_permission" "api-gateway-invoke-post-lambda" {
