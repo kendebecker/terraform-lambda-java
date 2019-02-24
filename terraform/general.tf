@@ -7,6 +7,8 @@ provider "aws" {
 
 variable "lambda_version"     {default = "1.0.0"}
 
+variable "scanlimit"         {default = "100"}
+
 variable "lang_prefix"        {default = "java"}
 
 variable "app_name"           {default = "CodingTips"}

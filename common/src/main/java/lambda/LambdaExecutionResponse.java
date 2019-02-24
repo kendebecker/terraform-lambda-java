@@ -1,3 +1,5 @@
+package lambda;
+
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.google.gson.Gson;
 import lombok.*;
@@ -20,6 +22,10 @@ public class LambdaExecutionResponse<T> {
 
     public static LambdaExecutionResponse ok(){
         return new LambdaExecutionResponse().withStatusCode(HttpStatus.SC_OK);
+    }
+
+    public static LambdaExecutionResponse badRequest() {
+        return new LambdaExecutionResponse().withStatusCode(HttpStatus.SC_BAD_REQUEST);
     }
 
 
@@ -47,6 +53,10 @@ public class LambdaExecutionResponse<T> {
 
     private String toJsonString(T object){
         return gson.toJson(object);
+    }
+
+    public String getBodyAsString(){
+        return gson.toJson(body);
     }
 
 
