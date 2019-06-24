@@ -22,7 +22,8 @@ public class CodingTipsRepository {
     private DynamoDBMapper dynamoDBMapper;
 
     public CodingTipsRepository(){
-        amazonDynamoDBClient = AmazonDynamoDBClientBuilder.standard()
+        amazonDynamoDBClient = AmazonDynamoDBClientBuilder
+                .standard()
                 .withRegion(REGION)
                 .build();
         dynamoDBMapper = new DynamoDBMapper(amazonDynamoDBClient);

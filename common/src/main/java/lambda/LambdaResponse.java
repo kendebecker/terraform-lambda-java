@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class LambdaExecutionResponse<T> {
+@ToString
+public class LambdaResponse<T> {
 
     @Getter
     private Map<String, String> headers = new HashMap<>();
@@ -20,12 +21,12 @@ public class LambdaExecutionResponse<T> {
 
     private Gson gson = new Gson();
 
-    public static LambdaExecutionResponse ok(){
-        return new LambdaExecutionResponse().withStatusCode(HttpStatus.SC_OK);
+    public static LambdaResponse ok(){
+        return new LambdaResponse().withStatusCode(HttpStatus.SC_OK);
     }
 
-    public static LambdaExecutionResponse badRequest() {
-        return new LambdaExecutionResponse().withStatusCode(HttpStatus.SC_BAD_REQUEST);
+    public static LambdaResponse badRequest() {
+        return new LambdaResponse().withStatusCode(HttpStatus.SC_BAD_REQUEST);
     }
 
 
@@ -33,20 +34,21 @@ public class LambdaExecutionResponse<T> {
 
         return new APIGatewayProxyResponseEvent()
                 .withHeaders(headers)
+                .withStatusCode(statusCode)
                 .withBody(toJsonString(body));
     }
 
-    public LambdaExecutionResponse<T> withHeader(String key, String value){
+    public LambdaResponse<T> withHeader(String key, String value){
         this.headers.put(key, value);
         return this;
     }
 
-    public LambdaExecutionResponse<T> withBody(T body){
+    public LambdaResponse<T> withBody(T body){
         this.body = body;
         return this;
     }
 
-    public LambdaExecutionResponse<T> withStatusCode(int statusCode){
+    public LambdaResponse<T> withStatusCode(int statusCode){
         this.statusCode = statusCode;
         return this;
     }

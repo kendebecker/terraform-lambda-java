@@ -14,6 +14,10 @@ resource "aws_lambda_function" "post-tips-lambda" {
 
   role = "${aws_iam_role.lambda_role.arn}"
 
+  tracing_config {
+    mode = "Active"
+  }
+
   environment {
     variables {
       SCANLIMIT = "${var.scanlimit}"

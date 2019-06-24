@@ -2,7 +2,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
-import lambda.LambdaExecutionResponse;
+import lambda.LambdaResponse;
 import lombok.extern.slf4j.Slf4j;
 import model.CodingTip;
 import persistence.CodingTipsRepository;
@@ -14,6 +14,7 @@ import java.util.Optional;
 @Slf4j
 public class GetLambda implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
+
     private CodingTipsRepository codingTipsRepository;
 
     public GetLambda() {
@@ -23,20 +24,20 @@ public class GetLambda implements RequestHandler<APIGatewayProxyRequestEvent, AP
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent event, Context context) {
         log.info("Handling get request");
 
-        LambdaExecutionResponse response = getTips();
+        LambdaResponse response = getTips();
 
-        log.info("Succesfully executed getTips");
+        log.info("Successfully executed getTips");
 
         return response.toAPIGatewayProxyResponseEvent();
     }
 
-    private LambdaExecutionResponse getTips(){
+    private LambdaResponse getTips(){
         Optional<List<CodingTip>> codingTips = codingTipsRepository.scanCodingTips();
 
         if(!codingTips.isPresent()){
-            return LambdaExecutionResponse.badRequest();
+            return LambdaResponse.badRequest();
         }
 
-        return LambdaExecutionResponse.ok().withBody(codingTips.get());
+        return LambdaResponse.ok().withBody(codingTips.get());
     }
 }

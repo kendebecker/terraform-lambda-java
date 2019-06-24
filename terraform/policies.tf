@@ -55,3 +55,23 @@ resource "aws_iam_role_policy" "api-gateway-lambda-policy"{
 EOF
 }
 
+
+resource "aws_iam_role_policy" "lambda-xray-policy"{
+  name = "${var.app_name}_lambda_xray_policy"
+  role = "${aws_iam_role.lambda_role.id}"
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+              "xray:PutTraceSegments",
+              "xray:PutTelemetryRecords"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+}

@@ -33,7 +33,7 @@ resource "aws_api_gateway_method_settings" "settings" {
 }
 
 output "url" {
-  value = "${aws_api_gateway_deployment.codingtips-api-gateway-deployment.invoke_url}/api"
+  value = "${aws_api_gateway_deployment.codingtips-api-gateway-deployment.invoke_url}/codingtips"
 }
 
 output "post_lambda_arn" {
