@@ -3,7 +3,6 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.amazonaws.xray.AWSXRay;
-import com.amazonaws.xray.entities.Segment;
 import com.amazonaws.xray.entities.Subsegment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
