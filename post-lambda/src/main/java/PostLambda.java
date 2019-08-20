@@ -7,6 +7,8 @@ import com.amazonaws.xray.entities.Subsegment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import exceptions.ValidationException;
+import io.lumigo.handlers.LumigoConfiguration;
+import io.lumigo.handlers.LumigoRequestExecutor;
 import lambda.LambdaResponse;
 import lombok.extern.slf4j.Slf4j;
 import model.CodingTip;
@@ -15,9 +17,14 @@ import persistence.CodingTipsRepository;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 @Slf4j
 public class PostLambda implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+
+    static{
+        LumigoConfiguration.builder().token("t_ca20fef8fcdf40efac743").build().init();
+    }
 
     private Gson gson;
     private CodingTipsRepository codingTipsRepository;
@@ -29,25 +36,29 @@ public class PostLambda implements RequestHandler<APIGatewayProxyRequestEvent, A
     }
 
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent event, Context context) {
-        log.info("Received post event");
 
-        String body = event.getBody();
+        Supplier<APIGatewayProxyResponseEvent> supplier = () -> {
+            log.info("Received post event");
 
-        log.info("Body is [{}]", body);
-        Map<String, Object> bodyAsMap = new Gson().fromJson(body, new TypeToken<HashMap<String, Object>>(){}.getType());
+            String body = event.getBody();
 
-        if(!bodyIsValid(bodyAsMap)){
-            return LambdaResponse.badRequest().withBody("Bam, bad request! Correct the data.").toAPIGatewayProxyResponseEvent();
-        }
+            log.info("Body is [{}]", body);
+            Map<String, Object> bodyAsMap = new Gson().fromJson(body, new TypeToken<HashMap<String, Object>>(){}.getType());
 
-        CodingTip tip = gson.fromJson(body, CodingTip.class);
-        tip.setDate(Instant.now().toEpochMilli());
+            if(!bodyIsValid(bodyAsMap)){
+                return LambdaResponse.badRequest().withBody("Bam, bad request! Correct the data.").toAPIGatewayProxyResponseEvent();
+            }
 
-        postTip(tip);
+            CodingTip tip = gson.fromJson(body, CodingTip.class);
+            tip.setDate(Instant.now().toEpochMilli());
+
+            postTip(tip);
 
 
-        return LambdaResponse.ok().withBody("Tip was successfully added!").toAPIGatewayProxyResponseEvent();
+            return LambdaResponse.ok().withBody("Tip was successfully added!").toAPIGatewayProxyResponseEvent();
+        };
 
+        return LumigoRequestExecutor.execute(event, context, supplier);
     }
 
     boolean bodyIsValid(Map<String, Object> map) {

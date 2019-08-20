@@ -26,6 +26,14 @@ variable "post_lambda_function_handler" {
   default = "PostLambda::handleRequest"
 }
 
+variable "tips_stream_listener_lambda_payload_filename" {
+  default = "../tips-stream-listener-lambda/target/tips-stream-listener-lambda-1.0.0-SNAPSHOT.jar"
+}
+
+variable "tips_stream_listener_lambda_function_handler" {
+  default = "TipsStreamListenerLambda::handleRequest"
+}
+
 variable "lambda_runtime" {
   default = "java8"
 }

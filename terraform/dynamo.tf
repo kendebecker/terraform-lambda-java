@@ -5,7 +5,10 @@ resource "aws_dynamodb_table" "codingtips-dynamodb-table" {
   hash_key = "Author"
   range_key = "Date"
 
-  attribute = [
+  stream_enabled = true
+  stream_view_type = "NEW_IMAGE"
+
+attribute = [
     {
       name = "Author"
       type = "S"

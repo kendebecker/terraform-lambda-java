@@ -12,6 +12,7 @@
     <modules>
         <module>get-lambda</module>
         <module>post-lambda</module>
+        <module>tips-stream-listener-lambda</module>
         <module>common</module>
         <module>persistence</module>
     </modules>
