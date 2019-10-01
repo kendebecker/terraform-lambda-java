@@ -40,13 +40,13 @@ resource "aws_iam_role_policy" "dynamodb-stream-lambda-policy" {
 EOF
 }
 
-resource "aws_iam_role_policy" "cloudwatch-lambda-policy-python" {
+resource "aws_iam_role_policy" "cloudwatch-lambda-policy" {
   name = "${var.app_name}-cloudwatch-lambda-policy"
   role = "${aws_iam_role.lambda_role.id}"
-  policy = "${data.aws_iam_policy_document.api-gateway-logs-policy-document-python.json}"
+  policy = "${data.aws_iam_policy_document.api-gateway-logs-policy-document.json}"
 }
 
-data "aws_iam_policy_document" "api-gateway-logs-policy-document-python" {
+data "aws_iam_policy_document" "api-gateway-logs-policy-document" {
   statement {
     actions = [
       "logs:CreateLogStream",

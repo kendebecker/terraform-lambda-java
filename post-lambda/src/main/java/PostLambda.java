@@ -7,8 +7,6 @@ import com.amazonaws.xray.entities.Subsegment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import exceptions.ValidationException;
-import io.lumigo.handlers.LumigoConfiguration;
-import io.lumigo.handlers.LumigoRequestExecutor;
 import lambda.LambdaResponse;
 import lombok.extern.slf4j.Slf4j;
 import model.CodingTip;
@@ -17,60 +15,52 @@ import persistence.CodingTipsRepository;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
 @Slf4j
 public class PostLambda implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
-
-    static{
-        LumigoConfiguration.builder().token("t_ca20fef8fcdf40efac743").build().init();
-    }
-
     private Gson gson;
+
     private CodingTipsRepository codingTipsRepository;
 
 
-    public PostLambda(){
+    public PostLambda() {
         gson = new Gson();
         codingTipsRepository = new CodingTipsRepository();
     }
 
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent event, Context context) {
 
-        Supplier<APIGatewayProxyResponseEvent> supplier = () -> {
-            log.info("Received post event");
+        log.info("Received post event");
 
-            String body = event.getBody();
+        String body = event.getBody();
 
-            log.info("Body is [{}]", body);
-            Map<String, Object> bodyAsMap = new Gson().fromJson(body, new TypeToken<HashMap<String, Object>>(){}.getType());
+        log.info("Body is [{}]", body.replace(System.getProperty("line.separator"), ""));
+        Map<String, Object> bodyAsMap = new Gson().fromJson(body, new TypeToken<HashMap<String, Object>>() {
+        }.getType());
 
-            if(!bodyIsValid(bodyAsMap)){
-                return LambdaResponse.badRequest().withBody("Bam, bad request! Correct the data.").toAPIGatewayProxyResponseEvent();
-            }
+        if (!bodyIsValid(bodyAsMap)) {
+            return LambdaResponse.badRequest().withBody("Bam, bad request! Correct the data.").toAPIGatewayProxyResponseEvent();
+        }
 
-            CodingTip tip = gson.fromJson(body, CodingTip.class);
-            tip.setDate(Instant.now().toEpochMilli());
+        CodingTip tip = gson.fromJson(body, CodingTip.class);
+        tip.setDate(Instant.now().toEpochMilli());
 
-            postTip(tip);
+        postTip(tip);
 
 
-            return LambdaResponse.ok().withBody("Tip was successfully added!").toAPIGatewayProxyResponseEvent();
-        };
-
-        return LumigoRequestExecutor.execute(event, context, supplier);
+        return LambdaResponse.ok().withBody("Tip was successfully added!").toAPIGatewayProxyResponseEvent();
     }
 
     boolean bodyIsValid(Map<String, Object> map) {
         Subsegment subsegment = AWSXRay.beginSubsegment("Validate Body");
         boolean valid = false;
         try {
-            if(!map.containsKey("author") || !map.containsKey("tip")){
+            if (!map.containsKey("author") || !map.containsKey("tip")) {
                 log.info("body was invalid");
                 throw new ValidationException("Body was invalid");
             }
             valid = true;
-        } catch (ValidationException e){
+        } catch (ValidationException e) {
             subsegment.addException(e);
         } finally {
             AWSXRay.endSubsegment();
@@ -78,7 +68,7 @@ public class PostLambda implements RequestHandler<APIGatewayProxyRequestEvent, A
         }
     }
 
-    private void postTip(CodingTip tip){
+    private void postTip(CodingTip tip) {
         Subsegment subsegment = AWSXRay.beginSubsegment("CodingTips.postTip");
 
         subsegment.putAnnotation("Developer", "Nick");
