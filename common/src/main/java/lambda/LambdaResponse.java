@@ -25,6 +25,10 @@ public class LambdaResponse<T> {
         return new LambdaResponse().withStatusCode(HttpStatus.SC_OK);
     }
 
+    public static LambdaResponse created(){
+        return new LambdaResponse().withStatusCode(HttpStatus.SC_CREATED);
+    }
+
     public static LambdaResponse badRequest() {
         return new LambdaResponse().withStatusCode(HttpStatus.SC_BAD_REQUEST);
     }

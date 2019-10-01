@@ -25,7 +25,7 @@ paths:
     post:
       description: "Post a codingtip"
       responses:
-        '200':
+        '201':
           description: 200 response
           content:
             application/json:

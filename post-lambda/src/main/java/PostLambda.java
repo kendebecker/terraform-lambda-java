@@ -2,8 +2,6 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
-import com.amazonaws.xray.AWSXRay;
-import com.amazonaws.xray.entities.Subsegment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import exceptions.ValidationException;
@@ -48,34 +46,21 @@ public class PostLambda implements RequestHandler<APIGatewayProxyRequestEvent, A
         postTip(tip);
 
 
-        return LambdaResponse.ok().withBody("Tip was successfully added!").toAPIGatewayProxyResponseEvent();
+        return LambdaResponse.created().withBody("Tip was successfully added!").toAPIGatewayProxyResponseEvent();
     }
 
     boolean bodyIsValid(Map<String, Object> map) {
-        Subsegment subsegment = AWSXRay.beginSubsegment("Validate Body");
         boolean valid = false;
-        try {
-            if (!map.containsKey("author") || !map.containsKey("tip")) {
-                log.info("body was invalid");
-                throw new ValidationException("Body was invalid");
-            }
-            valid = true;
-        } catch (ValidationException e) {
-            subsegment.addException(e);
-        } finally {
-            AWSXRay.endSubsegment();
-            return valid;
+        // typically you validate against the dto's generated from the swagger
+        if (!map.containsKey("author") || !map.containsKey("tip")) {
+            log.info("body was invalid");
+            throw new ValidationException("Body was invalid");
         }
+        valid = true;
+        return valid;
     }
 
     private void postTip(CodingTip tip) {
-        Subsegment subsegment = AWSXRay.beginSubsegment("CodingTips.postTip");
-
-        subsegment.putAnnotation("Developer", "Nick");
-        subsegment.putMetadata("Company", "TheNickNackjes");
-
         codingTipsRepository.postTip(tip);
-
-        AWSXRay.endSubsegment();
     }
 }
