@@ -1,5 +1,7 @@
 # CodingTips
 
+![architecture](CodingTips.png)
+
 ## Prerequisites
 * install and configure AWS cli
 * install Terraform
@@ -15,3 +17,4 @@ cd terraform
 terraform init
 terraform apply
 ```
+
