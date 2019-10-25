@@ -7,7 +7,8 @@ resource "aws_api_gateway_rest_api" "codingtips-api-gateway" {
 data "template_file" codingtips_api_swagger{
   template = "${file("swagger.yaml")}"
 
-  vars {
+  vars = {
+    name        = "${var.app_name}-${var.lang_prefix}-API"
     get_lambda_arn = "${aws_lambda_function.get-tips-lambda.invoke_arn}"
     post_lambda_arn = "${aws_lambda_function.post-tips-lambda.invoke_arn}"
   }

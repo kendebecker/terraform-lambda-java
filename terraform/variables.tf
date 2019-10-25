@@ -6,7 +6,7 @@ variable "lang_prefix"        {default = "java"}
 
 variable "app_name"           {default = "CodingTips"}
 
-variable "region"             {default = "eu-west-1"}
+variable "region"             {default = "eu-west-2"}
 
 variable "account_id"         {default = ""}
 

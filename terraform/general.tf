@@ -1,13 +1,15 @@
 provider "aws" {
   region = "${var.region}"
-  profile    = "nickvh-jworks"
+  profile    = "private"
 }
 
 terraform {
   backend "s3" {
-    bucket = "codingtips-java"
+    bucket = "codingtips-java-kdb"
     key = "terraform/codingtips-java.tfstate"
-    region = "eu-west-1"
+    region = "eu-west-2"
     encrypt = "true"
+    profile    = "private"
+    dynamodb_table = "terraform-state"
   }
 }

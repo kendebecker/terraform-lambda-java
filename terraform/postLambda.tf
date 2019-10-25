@@ -2,7 +2,7 @@ resource "aws_lambda_function" "post-tips-lambda" {
   function_name = "${var.app_name}-${var.lang_prefix}-post"
 
   filename      = "${var.post_lambda_payload_filename}"
-  source_code_hash = "${base64sha256(file(var.post_lambda_payload_filename))}"
+  source_code_hash = "${filebase64sha256(var.post_lambda_payload_filename)}"
 
   # "main" is the filename within the zip file (index.js) and "handler"
   # is the name of the property under which the handler function was
@@ -19,7 +19,7 @@ resource "aws_lambda_function" "post-tips-lambda" {
   }
 
   environment {
-    variables {
+    variables = {
       SCANLIMIT = "${var.scanlimit}"
       REGION = "${var.region}"
     }

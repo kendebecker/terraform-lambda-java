@@ -54,7 +54,8 @@ public class PostLambda implements RequestHandler<APIGatewayProxyRequestEvent, A
         // typically you validate against the dto's generated from the swagger
         if (!map.containsKey("author") || !map.containsKey("tip")) {
             log.info("body was invalid");
-            throw new ValidationException("Body was invalid");
+            return false;
+//            throw new ValidationException("Body was invalid");
         }
         valid = true;
         return valid;

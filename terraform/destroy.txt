@@ -1,0 +1,522 @@
+[0m[1mRefreshing Terraform state in-memory prior to plan...[0m
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+[0m
+[0m[1mdata.aws_iam_policy.aws_xray_write_only_access: Refreshing state...[0m
+[0m[1maws_iam_role.lambda_role: Refreshing state... [id=CodingTips-java-lambda][0m
+[0m[1maws_dynamodb_table.terraform_state_table: Refreshing state... [id=terraform-state][0m
+[0m[1maws_iam_user_policy.user_s3_access_policy: Refreshing state... [id=Ken:Terraform_S3][0m
+[0m[1mdata.aws_iam_policy_document.api_gateway_assumerole_policy_document: Refreshing state...[0m
+[0m[1mdata.aws_iam_policy_document.cloudwatch_assumerole_policy_document: Refreshing state...[0m
+[0m[1mdata.aws_iam_policy_document.api-gateway-logs-policy-document: Refreshing state...[0m
+[0m[1maws_dynamodb_table.codingtips-dynamodb-table: Refreshing state... [id=CodingTips-java-dynamodb][0m
+[0m[1maws_iam_role.api_gateway_role: Refreshing state... [id=CodingTips-java-api-gateway][0m
+[0m[1maws_iam_role.cloudwatch_role: Refreshing state... [id=CodingTips-java-cloudwatch][0m
+[0m[1maws_iam_user_policy.user_state_table_policy: Refreshing state... [id=Ken:state_table_policy][0m
+[0m[1maws_iam_role_policy.cloudwatch-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips-cloudwatch-lambda-policy][0m
+[0m[1maws_lambda_function.post-tips-lambda: Refreshing state... [id=CodingTips-java-post][0m
+[0m[1maws_lambda_function.tips-stream-listener-tips-lambda: Refreshing state... [id=CodingTips-java-tips-stream-listener][0m
+[0m[1maws_lambda_function.get-tips-lambda: Refreshing state... [id=CodingTips-java-get][0m
+[0m[1maws_iam_role_policy.api-gateway-lambda-policy: Refreshing state... [id=CodingTips-java-api-gateway:CodingTips_api_gateway_lambda_policy][0m
+[0m[1mdata.template_file.codingtips_api_swagger: Refreshing state...[0m
+[0m[1maws_api_gateway_rest_api.codingtips-api-gateway: Refreshing state... [id=iuh8gbjhjj][0m
+[0m[1maws_iam_role_policy.dynamodb-stream-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips_dynamodb_stream_lambda_policy][0m
+[0m[1maws_iam_role_policy.dynamodb-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips_dynamodb_lambda_policy][0m
+[0m[1maws_lambda_event_source_mapping.dynamodb-stream-invoke-listener-lambda: Refreshing state... [id=d9af14f4-6592-49b0-b897-241a67c213fa][0m
+[0m[1maws_iam_role_policy_attachment.aws_xray_write_only_access: Refreshing state... [id=CodingTips-java-lambda-20191024152647404600000001][0m
+[0m[1maws_api_gateway_deployment.codingtips-api-gateway-deployment: Refreshing state... [id=zhsipv][0m
+[0m[1maws_lambda_permission.api-gateway-invoke-get-lambda: Refreshing state... [id=AllowAPIGatewayInvoke][0m
+[0m[1maws_lambda_permission.api-gateway-invoke-post-lambda: Refreshing state... [id=AllowAPIGatewayInvoke][0m
+[0m[1maws_api_gateway_method_settings.settings: Refreshing state... [id=iuh8gbjhjj-default-*/*][0m
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  [31m-[0m destroy
+[0m
+Terraform will perform the following actions:
+
+[1m  # aws_api_gateway_deployment.codingtips-api-gateway-deployment[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_api_gateway_deployment" "codingtips-api-gateway-deployment" {
+      [31m-[0m [0m[1m[0mcreated_date[0m[0m  = "2019-10-24T15:27:14Z" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mexecution_arn[0m[0m = "arn:aws:execute-api:eu-west-2:735221941004:iuh8gbjhjj/default" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m            = "zhsipv" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0minvoke_url[0m[0m    = "https://iuh8gbjhjj.execute-api.eu-west-2.amazonaws.com/default" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrest_api_id[0m[0m   = "iuh8gbjhjj" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstage_name[0m[0m    = "default" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_api_gateway_method_settings.settings[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_api_gateway_method_settings" "settings" {
+      [31m-[0m [0m[1m[0mid[0m[0m          = "iuh8gbjhjj-default-*/*" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mmethod_path[0m[0m = "*/*" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrest_api_id[0m[0m = "iuh8gbjhjj" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstage_name[0m[0m  = "default" [90m->[0m [0m[90mnull[0m[0m
+
+      [31m-[0m [0msettings {
+          [31m-[0m [0m[1m[0mcache_data_encrypted[0m[0m                    = false [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mcache_ttl_in_seconds[0m[0m                    = 0 [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mcaching_enabled[0m[0m                         = false [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mdata_trace_enabled[0m[0m                      = false [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mlogging_level[0m[0m                           = "INFO" [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mmetrics_enabled[0m[0m                         = true [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mrequire_authorization_for_cache_control[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mthrottling_burst_limit[0m[0m                  = 10 [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mthrottling_rate_limit[0m[0m                   = 10 [90m->[0m [0m[90mnull[0m[0m
+        }
+    }
+
+[1m  # aws_api_gateway_rest_api.codingtips-api-gateway[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_api_gateway_rest_api" "codingtips-api-gateway" {
+      [31m-[0m [0m[1m[0mapi_key_source[0m[0m           = "HEADER" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mbinary_media_types[0m[0m       = [] [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mbody[0m[0m                     = "---\r\nopenapi: 3.0.0\r\ninfo:\r\n  description: API to access codingtips application\r\n  version: '1'\r\n  title: CodingTips-java-API\r\npaths:\r\n  \"/codingtips\":\r\n    get:\r\n      description: \"Get coding tips\"\r\n      responses:\r\n        '200':\r\n          description: \"The codingtips request successful.\"\r\n          content:\r\n            application/json:\r\n              schema:\r\n                type: array\r\n                items:\r\n                  $ref: \"#/components/schemas/CodingTip\"\r\n      x-amazon-apigateway-integration:\r\n        uri: arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-get/invocations\r\n        passthroughBehavior: \"when_no_match\"\r\n        httpMethod: \"POST\"\r\n        type: \"aws_proxy\"\r\n    post:\r\n      description: \"Post a codingtip\"\r\n      responses:\r\n        '201':\r\n          description: 200 response\r\n          content:\r\n            application/json:\r\n              schema:\r\n                \"$ref\": \"#/components/schemas/CodingTip\"\r\n      x-amazon-apigateway-integration:\r\n        uri: arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-post/invocations\r\n        passthroughBehavior: \"when_no_match\"\r\n        httpMethod: \"POST\"\r\n        type: \"aws_proxy\"\r\n    options:\r\n      description: For CORS support\r\n      responses:\r\n        200:\r\n          description: 200 OK\r\n          headers:\r\n            Access-Control-Allow-Methods:\r\n              schema:\r\n                type: string\r\n            Access-Control-Allow-Headers:\r\n              schema:\r\n                type: string\r\n            Access-Control-Allow-Origin:\r\n              schema:\r\n                type: string\r\n      x-amazon-apigateway-integration:\r\n        responses:\r\n          default:\r\n            statusCode: 200\r\n            responseParameters:\r\n              method.response.header.Access-Control-Allow-Methods: \"'GET,OPTIONS'\"\r\n              method.response.header.Access-Control-Allow-Headers: \"'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'\"\r\n              method.response.header.Access-Control-Allow-Origin: \"'*'\"\r\n        passthroughBehavior: when_no_match\r\n        requestTemplates:\r\n          application/json: \"{\\\"statusCode\\\": 200}\"\r\n        type: mock\r\n        contentHandling: CONVERT_TO_TEXT\r\nservers:\r\n  - url: \"/\"\r\ncomponents:\r\n  schemas:\r\n    CodingTip:\r\n      type: object\r\n      description: \"A coding tip\"\r\n      properties:\r\n        tip:\r\n          type: string\r\n          description: \"The coding tip\"\r\n        date:\r\n          type: number\r\n          description: \"date in millis when tip was entered\"\r\n        author:\r\n          type: string\r\n          description: \"Author of the coding tip\"\r\n        category:\r\n          type: string\r\n          description: \"category of the coding tip\"\r\n      required:\r\n        - tip\r\n" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mcreated_date[0m[0m             = "2019-10-24T15:27:13Z" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mdescription[0m[0m              = "API to access codingtips application" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mexecution_arn[0m[0m            = "arn:aws:execute-api:eu-west-2:735221941004:iuh8gbjhjj" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                       = "iuh8gbjhjj" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mminimum_compression_size[0m[0m = -1 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m                     = "CodingTips-java-API" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mroot_resource_id[0m[0m         = "dxncrofarl" [90m->[0m [0m[90mnull[0m[0m
+
+      [31m-[0m [0mendpoint_configuration {
+          [31m-[0m [0m[1m[0mtypes[0m[0m = [
+              [31m-[0m [0m"EDGE",
+            ] [90m->[0m [0m[90mnull[0m[0m
+        }
+    }
+
+[1m  # aws_dynamodb_table.codingtips-dynamodb-table[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_dynamodb_table" "codingtips-dynamodb-table" {
+      [31m-[0m [0m[1m[0marn[0m[0m              = "arn:aws:dynamodb:eu-west-2:735221941004:table/CodingTips-java-dynamodb" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mbilling_mode[0m[0m     = "PROVISIONED" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mhash_key[0m[0m         = "Author" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m               = "CodingTips-java-dynamodb" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m             = "CodingTips-java-dynamodb" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrange_key[0m[0m        = "Date" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mread_capacity[0m[0m    = 5 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstream_arn[0m[0m       = "arn:aws:dynamodb:eu-west-2:735221941004:table/CodingTips-java-dynamodb/stream/2019-10-24T14:44:09.442" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstream_enabled[0m[0m   = true [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstream_label[0m[0m     = "2019-10-24T14:44:09.442" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstream_view_type[0m[0m = "NEW_IMAGE" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtags[0m[0m             = {} [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mwrite_capacity[0m[0m   = 5 [90m->[0m [0m[90mnull[0m[0m
+
+      [31m-[0m [0mattribute {
+          [31m-[0m [0m[1m[0mname[0m[0m = "Author" [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mtype[0m[0m = "S" [90m->[0m [0m[90mnull[0m[0m
+        }
+      [31m-[0m [0mattribute {
+          [31m-[0m [0m[1m[0mname[0m[0m = "Date" [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mtype[0m[0m = "N" [90m->[0m [0m[90mnull[0m[0m
+        }
+
+      [31m-[0m [0mpoint_in_time_recovery {
+          [31m-[0m [0m[1m[0menabled[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+        }
+
+      [31m-[0m [0mttl {
+          [31m-[0m [0m[1m[0menabled[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+        }
+    }
+
+[1m  # aws_dynamodb_table.terraform_state_table[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_dynamodb_table" "terraform_state_table" {
+      [31m-[0m [0m[1m[0marn[0m[0m            = "arn:aws:dynamodb:eu-west-2:735221941004:table/terraform-state" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mbilling_mode[0m[0m   = "PROVISIONED" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mhash_key[0m[0m       = "LockID" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m             = "terraform-state" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m           = "terraform-state" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mread_capacity[0m[0m  = 20 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstream_enabled[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtags[0m[0m           = {} [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mwrite_capacity[0m[0m = 20 [90m->[0m [0m[90mnull[0m[0m
+
+      [31m-[0m [0mattribute {
+          [31m-[0m [0m[1m[0mname[0m[0m = "LockID" [90m->[0m [0m[90mnull[0m[0m
+          [31m-[0m [0m[1m[0mtype[0m[0m = "S" [90m->[0m [0m[90mnull[0m[0m
+        }
+
+      [31m-[0m [0mpoint_in_time_recovery {
+          [31m-[0m [0m[1m[0menabled[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+        }
+
+      [31m-[0m [0mttl {
+          [31m-[0m [0m[1m[0menabled[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+        }
+    }
+
+[1m  # aws_iam_role.api_gateway_role[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_role" "api_gateway_role" {
+      [31m-[0m [0m[1m[0marn[0m[0m                   = "arn:aws:iam::735221941004:role/CodingTips-java-api-gateway" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction    = "sts:AssumeRole"
+                      [31m-[0m [0mEffect    = "Allow"
+                      [31m-[0m [0mPrincipal = {
+                          [31m-[0m [0mService = "apigateway.amazonaws.com"
+                        }
+                      [31m-[0m [0mSid       = ""
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mcreate_date[0m[0m           = "2019-10-24T14:44:10Z" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mforce_detach_policies[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                    = "CodingTips-java-api-gateway" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m                  = "CodingTips-java-api-gateway" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpath[0m[0m                  = "/" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtags[0m[0m                  = {} [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0munique_id[0m[0m             = "AROA2WLVEQMGEFVQLBPDR" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_role.cloudwatch_role[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_role" "cloudwatch_role" {
+      [31m-[0m [0m[1m[0marn[0m[0m                   = "arn:aws:iam::735221941004:role/CodingTips-java-cloudwatch" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction    = "sts:AssumeRole"
+                      [31m-[0m [0mEffect    = "Allow"
+                      [31m-[0m [0mPrincipal = {
+                          [31m-[0m [0mService = "logs.us-east-1.amazonaws.com"
+                        }
+                      [31m-[0m [0mSid       = ""
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mcreate_date[0m[0m           = "2019-10-24T14:44:10Z" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mforce_detach_policies[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                    = "CodingTips-java-cloudwatch" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m                  = "CodingTips-java-cloudwatch" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpath[0m[0m                  = "/" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtags[0m[0m                  = {} [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0munique_id[0m[0m             = "AROA2WLVEQMGBT4EBT5D4" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_role.lambda_role[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_role" "lambda_role" {
+      [31m-[0m [0m[1m[0marn[0m[0m                   = "arn:aws:iam::735221941004:role/CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction    = "sts:AssumeRole"
+                      [31m-[0m [0mEffect    = "Allow"
+                      [31m-[0m [0mPrincipal = {
+                          [31m-[0m [0mService = "lambda.amazonaws.com"
+                        }
+                      [31m-[0m [0mSid       = ""
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mcreate_date[0m[0m           = "2019-10-24T14:44:10Z" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mforce_detach_policies[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                    = "CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m                  = "CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpath[0m[0m                  = "/" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtags[0m[0m                  = {} [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0munique_id[0m[0m             = "AROA2WLVEQMGO3QF2CY5T" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_role_policy.api-gateway-lambda-policy[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_role_policy" "api-gateway-lambda-policy" {
+      [31m-[0m [0m[1m[0mid[0m[0m     = "CodingTips-java-api-gateway:CodingTips_api_gateway_lambda_policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m   = "CodingTips_api_gateway_lambda_policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpolicy[0m[0m = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction   = "lambda:InvokeFunction"
+                      [31m-[0m [0mEffect   = "Allow"
+                      [31m-[0m [0mResource = "*"
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrole[0m[0m   = "CodingTips-java-api-gateway" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_role_policy.cloudwatch-lambda-policy[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_role_policy" "cloudwatch-lambda-policy" {
+      [31m-[0m [0m[1m[0mid[0m[0m     = "CodingTips-java-lambda:CodingTips-cloudwatch-lambda-policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m   = "CodingTips-cloudwatch-lambda-policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpolicy[0m[0m = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction   = [
+                          [31m-[0m [0m"logs:PutLogEvents",
+                          [31m-[0m [0m"logs:CreateLogStream",
+                          [31m-[0m [0m"logs:CreateLogGroup",
+                        ]
+                      [31m-[0m [0mEffect   = "Allow"
+                      [31m-[0m [0mResource = "arn:aws:logs:*:*:*"
+                      [31m-[0m [0mSid      = ""
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrole[0m[0m   = "CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_role_policy.dynamodb-lambda-policy[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_role_policy" "dynamodb-lambda-policy" {
+      [31m-[0m [0m[1m[0mid[0m[0m     = "CodingTips-java-lambda:CodingTips_dynamodb_lambda_policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m   = "CodingTips_dynamodb_lambda_policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpolicy[0m[0m = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction   = [
+                          [31m-[0m [0m"dynamodb:*",
+                        ]
+                      [31m-[0m [0mEffect   = "Allow"
+                      [31m-[0m [0mResource = "arn:aws:dynamodb:eu-west-2:735221941004:table/CodingTips-java-dynamodb"
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrole[0m[0m   = "CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_role_policy.dynamodb-stream-lambda-policy[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_role_policy" "dynamodb-stream-lambda-policy" {
+      [31m-[0m [0m[1m[0mid[0m[0m     = "CodingTips-java-lambda:CodingTips_dynamodb_stream_lambda_policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m   = "CodingTips_dynamodb_stream_lambda_policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpolicy[0m[0m = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction   = [
+                          [31m-[0m [0m"dynamodb:DescribeStream",
+                          [31m-[0m [0m"dynamodb:GetRecords",
+                          [31m-[0m [0m"dynamodb:GetShardIterator",
+                          [31m-[0m [0m"dynamodb:ListStreams",
+                        ]
+                      [31m-[0m [0mEffect   = "Allow"
+                      [31m-[0m [0mResource = "arn:aws:dynamodb:eu-west-2:735221941004:table/CodingTips-java-dynamodb/stream/2019-10-24T14:44:09.442"
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrole[0m[0m   = "CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_role_policy_attachment.aws_xray_write_only_access[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_role_policy_attachment" "aws_xray_write_only_access" {
+      [31m-[0m [0m[1m[0mid[0m[0m         = "CodingTips-java-lambda-20191024152647404600000001" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrole[0m[0m       = "CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_user_policy.user_s3_access_policy[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_user_policy" "user_s3_access_policy" {
+      [31m-[0m [0m[1m[0mid[0m[0m     = "Ken:Terraform_S3" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m   = "Terraform_S3" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpolicy[0m[0m = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction   = "s3:ListBucket"
+                      [31m-[0m [0mEffect   = "Allow"
+                      [31m-[0m [0mResource = "arn:aws:s3:::codingtips-java-kdb"
+                    },
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction   = [
+                          [31m-[0m [0m"s3:GetObject",
+                          [31m-[0m [0m"s3:PutObject",
+                        ]
+                      [31m-[0m [0mEffect   = "Allow"
+                      [31m-[0m [0mResource = "arn:aws:s3:::codingtips-java-kdb/terraform/codingtips-java.tfstate"
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0muser[0m[0m   = "Ken" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_iam_user_policy.user_state_table_policy[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_iam_user_policy" "user_state_table_policy" {
+      [31m-[0m [0m[1m[0mid[0m[0m     = "Ken:state_table_policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mname[0m[0m   = "state_table_policy" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpolicy[0m[0m = jsonencode(
+            {
+              [31m-[0m [0mStatement = [
+                  [31m-[0m [0m{
+                      [31m-[0m [0mAction   = [
+                          [31m-[0m [0m"dynamodb:GetItem",
+                          [31m-[0m [0m"dynamodb:PutItem",
+                          [31m-[0m [0m"dynamodb:DeleteItem",
+                        ]
+                      [31m-[0m [0mEffect   = "Allow"
+                      [31m-[0m [0mResource = "arn:aws:dynamodb:eu-west-2:735221941004:table/terraform-state"
+                    },
+                ]
+              [31m-[0m [0mVersion   = "2012-10-17"
+            }
+        ) [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0muser[0m[0m   = "Ken" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_lambda_event_source_mapping.dynamodb-stream-invoke-listener-lambda[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_lambda_event_source_mapping" "dynamodb-stream-invoke-listener-lambda" {
+      [31m-[0m [0m[1m[0mbatch_size[0m[0m              = 1 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0menabled[0m[0m                 = true [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mevent_source_arn[0m[0m        = "arn:aws:dynamodb:eu-west-2:735221941004:table/CodingTips-java-dynamodb/stream/2019-10-24T14:44:09.442" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfunction_arn[0m[0m            = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-tips-stream-listener" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfunction_name[0m[0m           = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-tips-stream-listener" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                      = "d9af14f4-6592-49b0-b897-241a67c213fa" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mlast_processing_result[0m[0m  = "OK" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstarting_position[0m[0m       = "LATEST" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstate[0m[0m                   = "Enabled" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstate_transition_reason[0m[0m = "User action" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0muuid[0m[0m                    = "d9af14f4-6592-49b0-b897-241a67c213fa" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_lambda_function.get-tips-lambda[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_lambda_function" "get-tips-lambda" {
+      [31m-[0m [0m[1m[0marn[0m[0m                            = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-get" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfilename[0m[0m                       = "../get-lambda/target/get-lambda-1.0.0-SNAPSHOT.jar" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfunction_name[0m[0m                  = "CodingTips-java-get" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mhandler[0m[0m                        = "GetLambda::handleRequest" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                             = "CodingTips-java-get" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0minvoke_arn[0m[0m                     = "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-get/invocations" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mlast_modified[0m[0m                  = "2019-10-24T15:27:14.461+0000" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mlayers[0m[0m                         = [] [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mmemory_size[0m[0m                    = 512 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpublish[0m[0m                        = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mqualified_arn[0m[0m                  = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-get:$LATEST" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mreserved_concurrent_executions[0m[0m = -1 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrole[0m[0m                           = "arn:aws:iam::735221941004:role/CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mruntime[0m[0m                        = "java8" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0msource_code_hash[0m[0m               = "5adn6T09NZcUHxBd9aDWeSG0h3/qbjezarf6zSq6DWo=" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0msource_code_size[0m[0m               = 19791880 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtags[0m[0m                           = {} [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtimeout[0m[0m                        = 30 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mversion[0m[0m                        = "$LATEST" [90m->[0m [0m[90mnull[0m[0m
+
+      [31m-[0m [0menvironment {
+          [31m-[0m [0m[1m[0mvariables[0m[0m = {
+              [31m-[0m [0m"REGION"    = "eu-west-2"
+              [31m-[0m [0m"SCANLIMIT" = "100"
+            } [90m->[0m [0m[90mnull[0m[0m
+        }
+
+      [31m-[0m [0mtracing_config {
+          [31m-[0m [0m[1m[0mmode[0m[0m = "Active" [90m->[0m [0m[90mnull[0m[0m
+        }
+    }
+
+[1m  # aws_lambda_function.post-tips-lambda[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_lambda_function" "post-tips-lambda" {
+      [31m-[0m [0m[1m[0marn[0m[0m                            = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-post" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfilename[0m[0m                       = "../post-lambda/target/post-lambda-1.0.0-SNAPSHOT.jar" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfunction_name[0m[0m                  = "CodingTips-java-post" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mhandler[0m[0m                        = "PostLambda::handleRequest" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                             = "CodingTips-java-post" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0minvoke_arn[0m[0m                     = "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-post/invocations" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mlast_modified[0m[0m                  = "2019-10-24T15:27:14.464+0000" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mlayers[0m[0m                         = [] [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mmemory_size[0m[0m                    = 512 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpublish[0m[0m                        = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mqualified_arn[0m[0m                  = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-post:$LATEST" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mreserved_concurrent_executions[0m[0m = -1 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrole[0m[0m                           = "arn:aws:iam::735221941004:role/CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mruntime[0m[0m                        = "java8" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0msource_code_hash[0m[0m               = "NVCcpp5y5MEEfTSMnjp2Efo5nc1YRku3ZpaTcgROgas=" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0msource_code_size[0m[0m               = 19793292 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtags[0m[0m                           = {} [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtimeout[0m[0m                        = 30 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mversion[0m[0m                        = "$LATEST" [90m->[0m [0m[90mnull[0m[0m
+
+      [31m-[0m [0menvironment {
+          [31m-[0m [0m[1m[0mvariables[0m[0m = {
+              [31m-[0m [0m"REGION"    = "eu-west-2"
+              [31m-[0m [0m"SCANLIMIT" = "100"
+            } [90m->[0m [0m[90mnull[0m[0m
+        }
+
+      [31m-[0m [0mtracing_config {
+          [31m-[0m [0m[1m[0mmode[0m[0m = "Active" [90m->[0m [0m[90mnull[0m[0m
+        }
+    }
+
+[1m  # aws_lambda_function.tips-stream-listener-tips-lambda[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_lambda_function" "tips-stream-listener-tips-lambda" {
+      [31m-[0m [0m[1m[0marn[0m[0m                            = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-tips-stream-listener" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfilename[0m[0m                       = "../tips-stream-listener-lambda/target/tips-stream-listener-lambda-1.0.0-SNAPSHOT.jar" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfunction_name[0m[0m                  = "CodingTips-java-tips-stream-listener" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mhandler[0m[0m                        = "TipsStreamListenerLambda::handleRequest" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                             = "CodingTips-java-tips-stream-listener" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0minvoke_arn[0m[0m                     = "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-tips-stream-listener/invocations" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mlast_modified[0m[0m                  = "2019-10-24T15:27:25.284+0000" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mlayers[0m[0m                         = [] [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mmemory_size[0m[0m                    = 512 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mpublish[0m[0m                        = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mqualified_arn[0m[0m                  = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-tips-stream-listener:$LATEST" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mreserved_concurrent_executions[0m[0m = -1 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mrole[0m[0m                           = "arn:aws:iam::735221941004:role/CodingTips-java-lambda" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mruntime[0m[0m                        = "java8" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0msource_code_hash[0m[0m               = "hPRr2hO3NK6oZfF48fTEb54VxeNH8AQHhcVsE33r9kk=" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0msource_code_size[0m[0m               = 19276268 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtags[0m[0m                           = {} [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mtimeout[0m[0m                        = 30 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mversion[0m[0m                        = "$LATEST" [90m->[0m [0m[90mnull[0m[0m
+
+      [31m-[0m [0menvironment {
+          [31m-[0m [0m[1m[0mvariables[0m[0m = {
+              [31m-[0m [0m"REGION" = "eu-west-2"
+            } [90m->[0m [0m[90mnull[0m[0m
+        }
+
+      [31m-[0m [0mtracing_config {
+          [31m-[0m [0m[1m[0mmode[0m[0m = "Active" [90m->[0m [0m[90mnull[0m[0m
+        }
+    }
+
+[1m  # aws_lambda_permission.api-gateway-invoke-get-lambda[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_lambda_permission" "api-gateway-invoke-get-lambda" {
+      [31m-[0m [0m[1m[0maction[0m[0m        = "lambda:InvokeFunction" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfunction_name[0m[0m = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-get" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m            = "AllowAPIGatewayInvoke" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mprincipal[0m[0m     = "apigateway.amazonaws.com" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0msource_arn[0m[0m    = "arn:aws:execute-api:eu-west-2:735221941004:iuh8gbjhjj/default/*/*" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstatement_id[0m[0m  = "AllowAPIGatewayInvoke" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[1m  # aws_lambda_permission.api-gateway-invoke-post-lambda[0m will be [1m[31mdestroyed[0m[0m
+[0m[31m  -[0m [0mresource "aws_lambda_permission" "api-gateway-invoke-post-lambda" {
+      [31m-[0m [0m[1m[0maction[0m[0m        = "lambda:InvokeFunction" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfunction_name[0m[0m = "arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-post" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m            = "AllowAPIGatewayInvoke" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mprincipal[0m[0m     = "apigateway.amazonaws.com" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0msource_arn[0m[0m    = "arn:aws:execute-api:eu-west-2:735221941004:iuh8gbjhjj/default/*/*" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstatement_id[0m[0m  = "AllowAPIGatewayInvoke" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[0m[1mPlan:[0m 0 to add, 0 to change, 21 to destroy.[0m
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+

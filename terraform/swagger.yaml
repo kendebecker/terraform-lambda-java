@@ -1,9 +1,9 @@
 ---
 openapi: 3.0.0
 info:
-  description: API for the codingtips application
+  description: API to access codingtips application
   version: '1'
-  title: codingtips
+  title: ${name}
 paths:
   "/codingtips":
     get:

@@ -1,0 +1,64 @@
+[0m[1mRefreshing Terraform state in-memory prior to plan...[0m
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+[0m
+[0m[1maws_dynamodb_table.codingtips-dynamodb-table: Refreshing state... [id=CodingTips-java-dynamodb][0m
+[0m[1mdata.aws_iam_policy.aws_xray_write_only_access: Refreshing state...[0m
+[0m[1mdata.aws_iam_policy_document.api_gateway_assumerole_policy_document: Refreshing state...[0m
+[0m[1mdata.aws_iam_policy_document.cloudwatch_assumerole_policy_document: Refreshing state...[0m
+[0m[1maws_iam_role.lambda_role: Refreshing state... [id=CodingTips-java-lambda][0m
+[0m[1mdata.aws_iam_policy_document.api-gateway-logs-policy-document: Refreshing state...[0m
+[0m[1maws_iam_role.api_gateway_role: Refreshing state... [id=CodingTips-java-api-gateway][0m
+[0m[1maws_iam_role.cloudwatch_role: Refreshing state... [id=CodingTips-java-cloudwatch][0m
+[0m[1maws_iam_role_policy.cloudwatch-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips-cloudwatch-lambda-policy][0m
+[0m[1maws_lambda_function.post-tips-lambda: Refreshing state... [id=CodingTips-java-post][0m
+[0m[1maws_lambda_function.tips-stream-listener-tips-lambda: Refreshing state... [id=CodingTips-java-tips-stream-listener][0m
+[0m[1maws_lambda_function.get-tips-lambda: Refreshing state... [id=CodingTips-java-get][0m
+[0m[1mdata.template_file.codingtips_api_swagger: Refreshing state...[0m
+[0m[1maws_api_gateway_rest_api.codingtips-api-gateway: Refreshing state... [id=iuh8gbjhjj][0m
+[0m[1maws_iam_role_policy.dynamodb-stream-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips_dynamodb_stream_lambda_policy][0m
+[0m[1maws_iam_role_policy.dynamodb-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips_dynamodb_lambda_policy][0m
+[0m[1maws_lambda_event_source_mapping.dynamodb-stream-invoke-listener-lambda: Refreshing state... [id=d9af14f4-6592-49b0-b897-241a67c213fa][0m
+[0m[1maws_iam_role_policy.api-gateway-lambda-policy: Refreshing state... [id=CodingTips-java-api-gateway:CodingTips_api_gateway_lambda_policy][0m
+[0m[1maws_api_gateway_deployment.codingtips-api-gateway-deployment: Refreshing state... [id=zhsipv][0m
+[0m[1maws_lambda_permission.api-gateway-invoke-get-lambda: Refreshing state... [id=AllowAPIGatewayInvoke][0m
+[0m[1maws_lambda_permission.api-gateway-invoke-post-lambda: Refreshing state... [id=AllowAPIGatewayInvoke][0m
+[0m[1maws_api_gateway_method_settings.settings: Refreshing state... [id=iuh8gbjhjj-default-*/*][0m
+[0m[1maws_iam_role_policy_attachment.aws_xray_write_only_access: Refreshing state... [id=CodingTips-java-lambda-20191024152647404600000001][0m
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  [33m~[0m update in-place
+[0m
+Terraform will perform the following actions:
+
+[1m  # aws_api_gateway_rest_api.codingtips-api-gateway[0m will be updated in-place[0m[0m
+[0m[33m  ~[0m [0mresource "aws_api_gateway_rest_api" "codingtips-api-gateway" {
+        [1m[0mapi_key_source[0m[0m           = "HEADER"
+        [1m[0mbinary_media_types[0m[0m       = []
+        [1m[0mbody[0m[0m                     = "---\r\nopenapi: 3.0.0\r\ninfo:\r\n  description: API for the codingtips application\r\n  version: '1'\r\n  title: codingtips\r\npaths:\r\n  \"/codingtips\":\r\n    get:\r\n      description: \"Get coding tips\"\r\n      responses:\r\n        '200':\r\n          description: \"The codingtips request successful.\"\r\n          content:\r\n            application/json:\r\n              schema:\r\n                type: array\r\n                items:\r\n                  $ref: \"#/components/schemas/CodingTip\"\r\n      x-amazon-apigateway-integration:\r\n        uri: arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-get/invocations\r\n        passthroughBehavior: \"when_no_match\"\r\n        httpMethod: \"POST\"\r\n        type: \"aws_proxy\"\r\n    post:\r\n      description: \"Post a codingtip\"\r\n      responses:\r\n        '201':\r\n          description: 200 response\r\n          content:\r\n            application/json:\r\n              schema:\r\n                \"$ref\": \"#/components/schemas/CodingTip\"\r\n      x-amazon-apigateway-integration:\r\n        uri: arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:735221941004:function:CodingTips-java-post/invocations\r\n        passthroughBehavior: \"when_no_match\"\r\n        httpMethod: \"POST\"\r\n        type: \"aws_proxy\"\r\n    options:\r\n      description: For CORS support\r\n      responses:\r\n        200:\r\n          description: 200 OK\r\n          headers:\r\n            Access-Control-Allow-Methods:\r\n              schema:\r\n                type: string\r\n            Access-Control-Allow-Headers:\r\n              schema:\r\n                type: string\r\n            Access-Control-Allow-Origin:\r\n              schema:\r\n                type: string\r\n      x-amazon-apigateway-integration:\r\n        responses:\r\n          default:\r\n            statusCode: 200\r\n            responseParameters:\r\n              method.response.header.Access-Control-Allow-Methods: \"'GET,OPTIONS'\"\r\n              method.response.header.Access-Control-Allow-Headers: \"'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'\"\r\n              method.response.header.Access-Control-Allow-Origin: \"'*'\"\r\n        passthroughBehavior: when_no_match\r\n        requestTemplates:\r\n          application/json: \"{\\\"statusCode\\\": 200}\"\r\n        type: mock\r\n        contentHandling: CONVERT_TO_TEXT\r\nservers:\r\n  - url: \"/\"\r\ncomponents:\r\n  schemas:\r\n    CodingTip:\r\n      type: object\r\n      description: \"A coding tip\"\r\n      properties:\r\n        tip:\r\n          type: string\r\n          description: \"The coding tip\"\r\n        date:\r\n          type: number\r\n          description: \"date in millis when tip was entered\"\r\n        author:\r\n          type: string\r\n          description: \"Author of the coding tip\"\r\n        category:\r\n          type: string\r\n          description: \"category of the coding tip\"\r\n      required:\r\n        - tip\r\n"
+        [1m[0mcreated_date[0m[0m             = "2019-10-24T15:27:13Z"
+      [33m~[0m [0m[1m[0mdescription[0m[0m              = "API for the codingtips application" [33m->[0m [0m"API to access codingtips application"
+        [1m[0mexecution_arn[0m[0m            = "arn:aws:execute-api:eu-west-2:735221941004:iuh8gbjhjj"
+        [1m[0mid[0m[0m                       = "iuh8gbjhjj"
+        [1m[0mminimum_compression_size[0m[0m = -1
+      [33m~[0m [0m[1m[0mname[0m[0m                     = "codingtips" [33m->[0m [0m"CodingTips-java-API"
+        [1m[0mroot_resource_id[0m[0m         = "dxncrofarl"
+
+        endpoint_configuration {
+            [1m[0mtypes[0m[0m = [
+                "EDGE",
+            ]
+        }
+    }
+
+[0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.[0m
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+

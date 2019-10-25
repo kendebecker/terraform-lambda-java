@@ -2,7 +2,7 @@ resource "aws_lambda_function" "tips-stream-listener-tips-lambda" {
   function_name = "${var.app_name}-${var.lang_prefix}-tips-stream-listener"
 
   filename      = "${var.tips_stream_listener_lambda_payload_filename}"
-  source_code_hash = "${base64sha256(file(var.tips_stream_listener_lambda_payload_filename))}"
+  source_code_hash = "${filebase64sha256(var.tips_stream_listener_lambda_payload_filename)}"
 
   # "main" is the filename within the zip file (index.js) and "handler"
   # is the name of the property under which the handler function was
@@ -19,7 +19,7 @@ resource "aws_lambda_function" "tips-stream-listener-tips-lambda" {
   }
 
   environment {
-    variables {
+    variables = {
       REGION = "${var.region}"
     }
   }
