@@ -1,3 +1,7 @@
+variable "bucket_name"     {default = "codingtips-java-kdb"}
+
+variable "bucket_key"     {default = "terraform/codingtips-java.tfstate"}
+
 variable "lambda_version"     {default = "1.0.0"}
 
 variable "scanlimit"         {default = "100"}
@@ -9,6 +13,11 @@ variable "app_name"           {default = "CodingTips"}
 variable "region"             {default = "eu-west-2"}
 
 variable "account_id"         {default = ""}
+
+variable "profile"         {default = "private"}
+
+variable "user"         {default = "Ken"}
+
 
 variable "get_lambda_payload_filename" {
   default = "../get-lambda/target/get-lambda-1.0.0-SNAPSHOT.jar"

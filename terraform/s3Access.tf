@@ -1,6 +1,6 @@
 resource "aws_iam_user_policy" "user_s3_access_policy"{
   name = "Terraform_S3"
-  user = "Ken"
+  user = "${var.user}"
   policy = <<EOF
 {
     "Version": "2012-10-17",
