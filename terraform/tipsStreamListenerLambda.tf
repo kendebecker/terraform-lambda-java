@@ -26,7 +26,7 @@ resource "aws_lambda_function" "tips-stream-listener-tips-lambda" {
 }
 
 resource "aws_lambda_event_source_mapping" "dynamodb-stream-invoke-listener-lambda" {
-  event_source_arn  = "${aws_dynamodb_table.codingtips-dynamodb-table.stream_arn}"
+  event_source_arn  = "${module.tipsDB.tipsDB_stream_arn}"
   function_name     = "${aws_lambda_function.tips-stream-listener-tips-lambda.arn}"
   starting_position = "LATEST"
   enabled = true

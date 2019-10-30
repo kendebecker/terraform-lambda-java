@@ -1,0 +1,34 @@
+[0m[1mRefreshing Terraform state in-memory prior to plan...[0m
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+[0m
+[0m[1mmodule.lockingDB.aws_dynamodb_table.terraform_state_table: Refreshing state... [id=terraform-state][0m
+[0m[1mmodule.tipsDB.aws_dynamodb_table.codingtips-dynamodb-table: Refreshing state... [id=CodingTips-java-dynamodb][0m
+[0m[1maws_iam_role.lambda_role: Refreshing state... [id=CodingTips-java-lambda][0m
+[0m[1mdata.aws_iam_policy.aws_xray_write_only_access: Refreshing state...[0m
+[0m[1mdata.aws_iam_policy_document.api_gateway_assumerole_policy_document: Refreshing state...[0m
+[0m[1mdata.aws_iam_policy_document.cloudwatch_assumerole_policy_document: Refreshing state...[0m
+[0m[1mmodule.stateS3.aws_s3_bucket.s3_bucket: Refreshing state... [id=codingtips-java-kdb][0m
+[0m[1maws_iam_role.cloudwatch_role: Refreshing state... [id=CodingTips-java-cloudwatch][0m
+[0m[1mdata.aws_iam_policy_document.api-gateway-logs-policy-document: Refreshing state...[0m
+[0m[1maws_iam_role.api_gateway_role: Refreshing state... [id=CodingTips-java-api-gateway][0m
+[0m[1maws_iam_role_policy.api-gateway-lambda-policy: Refreshing state... [id=CodingTips-java-api-gateway:CodingTips_api_gateway_lambda_policy][0m
+[0m[1maws_iam_role_policy.cloudwatch-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips-cloudwatch-lambda-policy][0m
+[0m[1maws_lambda_function.get-tips-lambda: Refreshing state... [id=CodingTips-java-get][0m
+[0m[1maws_lambda_function.tips-stream-listener-tips-lambda: Refreshing state... [id=CodingTips-java-tips-stream-listener][0m
+[0m[1maws_lambda_function.post-tips-lambda: Refreshing state... [id=CodingTips-java-post][0m
+[0m[1mdata.template_file.codingtips_api_swagger: Refreshing state...[0m
+[0m[1maws_api_gateway_rest_api.codingtips-api-gateway: Refreshing state... [id=2dq42x31n1][0m
+[0m[1maws_iam_role_policy_attachment.aws_xray_write_only_access: Refreshing state... [id=CodingTips-java-lambda-20191030102508377600000001][0m
+[0m[1maws_iam_role_policy.dynamodb-stream-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips_dynamodb_stream_lambda_policy][0m
+[0m[1maws_iam_role_policy.dynamodb-lambda-policy: Refreshing state... [id=CodingTips-java-lambda:CodingTips_dynamodb_lambda_policy][0m
+[0m[1maws_lambda_event_source_mapping.dynamodb-stream-invoke-listener-lambda: Refreshing state... [id=f9207382-7ce9-4f27-8aad-b85100615b7a][0m
+[0m[1mmodule.lockingDB.aws_iam_user_policy.user_state_table_policy: Refreshing state... [id=Ken:state_table_policy][0m
+[0m[1maws_api_gateway_deployment.codingtips-api-gateway-deployment: Refreshing state... [id=wmrzbu][0m
+[0m[1maws_api_gateway_method_settings.settings: Refreshing state... [id=2dq42x31n1-default-*/*][0m
+[0m[1maws_lambda_permission.api-gateway-invoke-get-lambda: Refreshing state... [id=AllowAPIGatewayInvoke][0m
+[0m[1maws_lambda_permission.api-gateway-invoke-post-lambda: Refreshing state... [id=AllowAPIGatewayInvoke][0m
+[0m[1mmodule.stateS3.aws_iam_user_policy.user_s3_access_policy: Refreshing state... [id=Ken:Terraform_S3][0m
+
+------------------------------------------------------------------------
+Releasing state lock. This may take a few moments...

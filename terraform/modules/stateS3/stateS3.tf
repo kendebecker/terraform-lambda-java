@@ -1,9 +1,13 @@
 variable "user"         {type = string}
+variable "bucket_name"         {type = string}
+variable "bucket_key"         {type = string}
+variable "region"         {type = string}
+variable "policy_name"         {type = string}
 
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "codingtips-java-kdb"
+  bucket = "${var.bucket_name}"
   acl    = "private"
-  region = "eu-west-2"
+  region = "${var.region}"
   lifecycle {
     prevent_destroy = true
   }
@@ -20,7 +24,7 @@ resource "aws_s3_bucket" "s3_bucket" {
 }
 
 resource "aws_iam_user_policy" "user_s3_access_policy"{
-  name = "Terraform_S3"
+  name = "${var.policy_name}"
   user = "${var.user}"
   lifecycle {
     prevent_destroy = true
@@ -45,5 +49,16 @@ resource "aws_iam_user_policy" "user_s3_access_policy"{
     ]
 }
 EOF
+}
+
+resource "aws_s3_bucket_object" "object" {
+  bucket = "${aws_s3_bucket.s3_bucket.id}"
+  key    = "${var.bucket_key}"
+  source = "terraform.tfstate"
+  content_type = "application/json"
+  depends_on = [
+    "aws_s3_bucket.s3_bucket",
+    "aws_iam_user_policy.user_s3_access_policy"
+  ]
 }
 

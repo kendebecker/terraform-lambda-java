@@ -2,6 +2,12 @@ variable "bucket_name"     {default = "codingtips-java-kdb"}
 
 variable "bucket_key"     {default = "terraform/codingtips-java.tfstate"}
 
+variable "s3_policy_name"     {default = "Terraform_S3"}
+
+variable "state_table_name"     {default = "terraform-state"}
+
+variable "state_table_policy_name"     {default = "state_table_policy"}
+
 variable "lambda_version"     {default = "1.0.0"}
 
 variable "scanlimit"         {default = "100"}

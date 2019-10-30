@@ -3,9 +3,11 @@ saves user,date,operation and path to state during operation as info and path as
 saves hash as digest afterward with path  hashtype as id ex path/state.tfstate-md5
 */
 variable "user"         {type = string}
+variable "table_name"         {type = string}
+variable "policy_name"         {type = string}
 
 resource "aws_dynamodb_table" "terraform_state_table"{
-    name = "terraform-state"
+    name = "${var.table_name}"
     hash_key = "LockID"
     read_capacity = 20
     write_capacity = 20
@@ -19,7 +21,7 @@ resource "aws_dynamodb_table" "terraform_state_table"{
 }
 
 resource "aws_iam_user_policy" "user_state_table_policy"{
-  name = "state_table_policy"
+  name = "${var.policy_name}"
   user = "${var.user}"
   lifecycle {
     prevent_destroy = true

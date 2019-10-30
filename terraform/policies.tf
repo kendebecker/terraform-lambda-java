@@ -11,7 +11,7 @@ resource "aws_iam_role_policy" "dynamodb-lambda-policy" {
       "Action": [
         "dynamodb:*"
       ],
-      "Resource": "${aws_dynamodb_table.codingtips-dynamodb-table.arn}"
+      "Resource": "${module.tipsDB.tipsDB_arn}"
     }
   ]
 }
@@ -33,7 +33,7 @@ resource "aws_iam_role_policy" "dynamodb-stream-lambda-policy" {
           "dynamodb:GetShardIterator",
           "dynamodb:ListStreams"
       ],
-      "Resource": "${aws_dynamodb_table.codingtips-dynamodb-table.stream_arn}"
+      "Resource": "${module.tipsDB.tipsDB_stream_arn}"
     }
   ]
 }

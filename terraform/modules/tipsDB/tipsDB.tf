@@ -7,9 +7,10 @@ locals {
   }
 }
 
+variable "name"     {type= string}
 
 resource "aws_dynamodb_table" "codingtips-dynamodb-table" {
-  name = "${var.app_name}-${var.lang_prefix}-dynamodb"
+  name = "${var.name}"
   read_capacity = 5
   write_capacity = 5
   hash_key = "Author"
@@ -26,6 +27,10 @@ resource "aws_dynamodb_table" "codingtips-dynamodb-table" {
     }
   }
 
+  lifecycle {
+    prevent_destroy = true
+  }
+
 //  attribute = [
 //    {
 //      name = "Author"
@@ -35,5 +40,13 @@ resource "aws_dynamodb_table" "codingtips-dynamodb-table" {
 //      name = "Date"
 //      type = "N"
 //    }]
+}
+
+output "tipsDB_arn" {
+  value = "${aws_dynamodb_table.codingtips-dynamodb-table.arn}"
+}
+
+output "tipsDB_stream_arn" {
+  value = "${aws_dynamodb_table.codingtips-dynamodb-table.stream_arn}"
 }
 
